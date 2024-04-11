@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    #timer {
+        font-size: 36px;
+        margin-top: 50px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+<div id="timer">Countdown Timer</div>
+
+<script>
+    // Set the start and end time
+    const startTime = new Date(); // Current time
+    const endTime = new Date(); // Set your end time
+    endTime.setHours(23, 59, 59); // Example: 11:59:59 PM
+
+    // Update the countdown every second
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    function updateTimer() {
+        const now = new Date();
+        const timeDifference = endTime - now;
+
+        if (timeDifference <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById("timer").innerText = "Time's up!";
+            return;
+        }
+
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerText = `Time Left: ${hours}h ${minutes}m ${seconds}s`;
+    }
+</script>
+</body>
+</html>
+
+
+
