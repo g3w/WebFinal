@@ -9,10 +9,10 @@ if ($conn->connect_error) {
 $user_id = $_SESSION['user_id'];
 $current_date = date("Y-m-d");
 
-$query = "SELECT Bookings.booking_date, Bookings.start_time, Bookings.end_time, Parkingspace.location, Parkingspace.price
-          FROM Bookings 
-          INNER JOIN Parkingspace ON Bookings.space_id = Parkingspace.space_id
-          WHERE Bookings.userid = '$user_id' AND Bookings.booking_date <'$current_date'";
+$query = "SELECT bookings.booking_date, bookings.start_time, bookings.end_time, parkingspace.location, parkingspace.price
+          FROM bookings 
+          INNER JOIN parkingspace ON bookings.space_id = parkingspace.space_id
+          WHERE bookings.userid = '$user_id' AND bookings.booking_date <'$current_date'";
 
 $result = $conn->query($query);
 
@@ -247,12 +247,7 @@ $conn->close();
             </a>
           </li>
 
-          <li>
-            <a href="#">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Notifications</span>
-            </a>
-          </li>
+
 
           <li>
             <a href="../view/change_password.php" class="settings">

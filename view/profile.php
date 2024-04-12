@@ -227,12 +227,6 @@
             </a>
           </li>
 
-          <li>
-            <a href="../view/notification.php">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Notifications</span>
-            </a>
-          </li>
 
           <li>
             <a href="../view/change_password.php" class="settings">
@@ -284,7 +278,7 @@
                 }
 
                 // Adjust your SQL query here
-                $query = "SELECT fname, lname, email, phone FROM Users WHERE userid = $user_id";
+                $query = "SELECT fname, lname, email, phone FROM users WHERE userid = $user_id";
 
                 $result = $conn->query($query);
 

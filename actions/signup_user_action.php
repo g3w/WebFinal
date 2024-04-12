@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Query the Role table to get the roleid based on the rolename
-    $roleQuery = "SELECT roleid FROM Role WHERE rolename = '$rolename'";
+    $roleQuery = "SELECT roleid FROM role WHERE rolename = '$rolename'";
     $roleQueryResult = $conn->query($roleQuery);
 
     if ($roleQueryResult === FALSE) {

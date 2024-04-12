@@ -39,7 +39,7 @@
         <div class="explore-content">
           <a href="./view/explore.php" className ="explore">
             <p>Get Started</p>
-            <img src="./pictures/arrow_btn.png" alt="" />
+            <img src="../pictures/arrow_btn.png" alt="" />
           </a>
         </div>
     </div>
@@ -49,9 +49,9 @@
 
     <script>
         const sentences = [
-          "Dive Into what you love",
-          "Indulge your passions",
-          "Give in to your passions"
+          "Enjoy the absolute Convenience",
+          "Park and Explore",
+          "Earn some Extra Cash"
         ];
     
         function displaySentences() {

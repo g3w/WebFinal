@@ -271,12 +271,7 @@ session_start();
             </a>
           </li>
 
-          <li>
-            <a href="#">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Notifications</span>
-            </a>
-          </li>
+ 
 
           <li>
             <a href="../view/change_password.php" class="settings">
@@ -317,14 +312,16 @@ session_start();
           <div id="bookings-container" class="bookings-container">
           <?php
 require_once('../settings/connection.php');
+$currentDate = date("Y-m-d");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$query = "SELECT Bookings.booking_date, Bookings.start_time, Bookings.end_time, Users.fname, Users.lname 
-        FROM Bookings 
-        INNER JOIN Users ON Bookings.userid = Users.userid";
+$query = "SELECT bookings.booking_date, bookings.start_time, bookings.end_time, users.fname, users.lname 
+          FROM bookings 
+          INNER JOIN users ON bookings.userid = users.userid
+          WHERE bookings.booking_date >= '$currentDate'";
 
 $result = $conn->query($query);
 

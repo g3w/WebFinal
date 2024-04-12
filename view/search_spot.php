@@ -181,12 +181,6 @@
             </a>
           </li>
 
-          <li>
-            <a href="../view/notification.php">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Notifications</span>
-            </a>
-          </li>
 
           <li>
             <a href="../view/change_password.php" class="settings">
@@ -229,7 +223,7 @@
           
           <?php
                 include('../settings/connection.php');
-                $sql = "SELECT * FROM Parkingspace";
+                $sql = "SELECT * FROM parkingspace";
                 $result = $conn->query($sql);
 
                 $colors = ['#ff8080', '#80b3ff', '#cc99ff', '#99ff99', '#ffcc66'];

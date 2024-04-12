@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $user_id = $_SESSION['user_id']; 
 
-    $current_password_query = "SELECT password FROM Users WHERE userid = '$user_id'";
+    $current_password_query = "SELECT password FROM users WHERE userid = '$user_id'";
     $current_password_result = $conn->query($current_password_query);
 
     if ($current_password_result->num_rows > 0) {
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($new_password === $confirm_password) {
                 $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
-                $update_password_query = "UPDATE Users SET password = '$hashed_password' WHERE userid = '$user_id'";
+                $update_password_query = "UPDATE users SET password = '$hashed_password' WHERE userid = '$user_id'";
                 if ($conn->query($update_password_query) === TRUE) {
                     echo "Password updated successfully.";
                     header("Location: ../Login/login.php");

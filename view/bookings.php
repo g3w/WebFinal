@@ -4,12 +4,12 @@ include('../settings/connection.php');
 session_start();
 $user_id = $_SESSION['user_id'];
 
-$totalSpotsQuery = "SELECT SUM(Total_number_of_spots) AS total_spots FROM Parkingspace WHERE userid = $user_id";
+$totalSpotsQuery = "SELECT SUM(Total_number_of_spots) AS total_spots FROM parkingspace WHERE userid = $user_id";
 $totalSpotsResult = $conn->query($totalSpotsQuery);
 $totalSpotsRow = $totalSpotsResult->fetch_assoc();
 $totalSpots = $totalSpotsRow['total_spots'];
 
-$availableSpotsQuery = "SELECT SUM(number_of_spots) AS available_spots FROM Parkingspace WHERE userid = $user_id";
+$availableSpotsQuery = "SELECT SUM(number_of_spots) AS available_spots FROM parkingspace WHERE userid = $user_id";
 $availableSpotsResult = $conn->query($availableSpotsQuery);
 $availableSpotsRow = $availableSpotsResult->fetch_assoc();
 $availableSpots = $availableSpotsRow['available_spots'];
@@ -195,12 +195,7 @@ $bookedSpots = $totalSpots - $availableSpots;
             </a>
           </li>
 
-          <li>
-            <a href="../view/customer_reviews.php">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Reviews</span>
-            </a>
-          </li>
+
 
           <li>
             <a href="../view/space_change_password.php" class="settings">
@@ -248,9 +243,9 @@ $bookedSpots = $totalSpots - $availableSpots;
           }
 
           // Query to fetch booking information along with user's first and last name
-          $query = "SELECT Bookings.booking_date, Bookings.start_time, Bookings.end_time, Users.fname, Users.lname 
-                    FROM Bookings 
-                    INNER JOIN Users ON Bookings.userid = Users.userid";
+          $query = "SELECT bookings.booking_date, bookings.start_time, bookings.end_time, users.fname, users.lname 
+                    FROM bookings 
+                    INNER JOIN users ON bookings.userid = users.userid";
 
           $result = $conn->query($query);
 

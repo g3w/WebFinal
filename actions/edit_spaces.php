@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $number_of_spots = $_POST['number_of_spots']; 
     $price = $_POST['price'];
 
-    $sql = "UPDATE Parkingspace SET location = '$location', number_of_spots = '$number_of_spots', price = '$price' WHERE space_id = $space_id"; 
+    $sql = "UPDATE parkingspace SET location = '$location', number_of_spots = '$number_of_spots', price = '$price' WHERE space_id = $space_id"; 
     $result = $conn->query($sql);
 
     if ($result === TRUE) {
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
 if (isset($_GET['space_id'])) {
     $space_id = $_GET['space_id'];
-    $sql = "SELECT * FROM Parkingspace WHERE space_id='$space_id'";
+    $sql = "SELECT * FROM parkingspace WHERE space_id='$space_id'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -51,11 +51,12 @@ if (isset($_GET['space_id'])) {
     <fieldset>
         <legend>Parking Space Information:</legend>
         Location:<br>
-        <input type="text" name="location" required><br><br>
+        <input type="text" name="location" value="<?php echo $location; ?>" required><br><br>
         Number of Spots:<br>
-        <input type="text" name="number_of_spots" required><br><br>
+        <input type="text" name="number_of_spots" value="<?php echo $number_of_spots; ?>" required><br><br>
         Price:<br>
-        <input type="text" name="price" required><br><br>
+        <input type="text" name="price" value="<?php echo $price; ?>" required><br><br>
+        <!-- Add hidden input field for space_id -->
         <input type="hidden" name="space_id" value="<?php echo $space_id; ?>">
         <br><br>
         <input type="submit" value="Submit" name="submit">

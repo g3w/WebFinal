@@ -17,7 +17,7 @@ if ($bookingDetails) {
 }
 
 // Execute the SQL query to fetch the price
-$priceQuery = "SELECT price FROM Parkingspace WHERE space_id = '$space_id'";
+$priceQuery = "SELECT price FROM parkingspace WHERE space_id = '$space_id'";
 $priceResult = $conn->query($priceQuery);
 
 // Check if the query was successful

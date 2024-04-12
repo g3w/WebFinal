@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "UPDATE Users SET fname='$fname', lname='$lname', email='$email', phone='$phone' WHERE userid='$user_id'";
+    $sql = "UPDATE users SET fname='$fname', lname='$lname', email='$email', phone='$phone' WHERE userid='$user_id'";
 
     if ($conn->query($sql) === TRUE) {
         echo "Profile updated successfully.";

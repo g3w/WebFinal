@@ -234,12 +234,7 @@
             </a>
           </li>
 
-          <li>
-            <a href="../view/customer_reviews.php">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Reviews</span>
-            </a>
-          </li>
+
 
 
 

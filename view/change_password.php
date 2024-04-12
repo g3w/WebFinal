@@ -113,12 +113,7 @@
             </a>
           </li>
 
-          <li>
-            <a href="#">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Notifications</span>
-            </a>
-          </li>
+
 
           <li>
             <a href="#" class="settings">

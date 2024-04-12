@@ -174,12 +174,7 @@ $user_id = $_SESSION['user_id'];
             </a>
           </li>
 
-          <li>
-            <a href="../view/customer_reviews.php">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Reviews</span>
-            </a>
-          </li>
+
 
           <li>
             <a href="../view/space_change_password.php" class="settings">
@@ -213,7 +208,7 @@ $user_id = $_SESSION['user_id'];
 
 
 // 2. Use the user ID to retrieve the space IDs corresponding to the spaces added by this user
-$spaceQuery = "SELECT space_id FROM Parkingspace WHERE userid = '$user_id'";
+$spaceQuery = "SELECT space_id FROM parkingspace WHERE userid = '$user_id'";
 $spaceResult = $conn->query($spaceQuery);
 
 // Initialize total revenue variable
@@ -223,7 +218,7 @@ $totalRevenue = 0;
 if ($spaceResult && $spaceResult->num_rows > 0) {
     while ($spaceRow = $spaceResult->fetch_assoc()) {
         $space_id = $spaceRow['space_id'];
-        $paymentQuery = "SELECT SUM(amount) AS total_amount FROM Payments WHERE space_id = '$space_id'";
+        $paymentQuery = "SELECT SUM(amount) AS total_amount FROM payments WHERE space_id = '$space_id'";
         $paymentResult = $conn->query($paymentQuery);
         if ($paymentResult && $paymentResult->num_rows > 0) {
             $paymentRow = $paymentResult->fetch_assoc();
@@ -262,9 +257,9 @@ echo "</div>";
                       <?php
 
           // Query to fetch booking information along with user's first and last name
-          $query = "SELECT Payments.payment_date, Payments.amount,Users.fname, Users.lname 
-                    FROM Payments 
-                    INNER JOIN Users ON Payments.userid = Users.userid";
+          $query = "SELECT payments.payment_date, payments.amount,users.fname, users.lname 
+                    FROM payments 
+                    INNER JOIN users ON payments.userid = users.userid";
 
           $result = $conn->query($query);
 

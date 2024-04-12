@@ -23,12 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $priceQuery = "SELECT price FROM Parkingspace WHERE space_id = '$space_id'";
+    $priceQuery = "SELECT price FROM parkingspace WHERE space_id = '$space_id'";
     $priceResult = $conn->query($priceQuery);
     $row = $priceResult->fetch_assoc();
     $price = $row['price'];
 
-    $bookingSql = "INSERT INTO Bookings (userid, space_id, booking_date, start_time, end_time) 
+    $bookingSql = "INSERT INTO bookings (userid, space_id, booking_date, start_time, end_time) 
             VALUES ('$user_id', '$space_id', '$bookingDate', '$startTime', '$endTime')";
 
     if ($conn->query($bookingSql) === TRUE) {
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ];
 
         // Update the status of the parking space
-        $updateStatusSql = "UPDATE Parkingspace SET number_of_spots = CASE 
+        $updateStatusSql = "UPDATE parkingspace SET number_of_spots = CASE 
                             WHEN number_of_spots > 0 THEN number_of_spots - 1 
                             ELSE number_of_spots END,               
                         status_id = CASE 

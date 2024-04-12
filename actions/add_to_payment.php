@@ -33,7 +33,7 @@ if ($priceResult) {
 }
 
 
-$sql = "INSERT INTO Payments (booking_id, userid, space_id, amount, payment_date, payment_method) 
+$sql = "INSERT INTO payments (booking_id, userid, space_id, amount, payment_date, payment_method) 
         VALUES ('$bookingId', '$user_id', '$space_id', '$price', NOW(), 'mobile money')";
 
 if ($conn->query($sql) === TRUE) {

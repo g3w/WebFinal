@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Parking</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,14 +17,14 @@
 
     <div class="background fade-in">
         <video autoplay loop muted>
-          <source src="./pictures/video1.mp4" type="video/mp4">
+          <source src="../pictures/video1.mp4" type="video/mp4">
         </video>
       </div>
 
     <div class="nav">
         <div class="nav-logo">Smart-parking</div>
         <ul class="nav-menu">
-          <li><a href="./Login/signup.php" class="nav-link">Register</a></li>
+          <li><a href="../Login/signup.php" class="nav-link">Register</a></li>
           <li>Explore</li>
           <li>About</li>
           <li class="nav-contact">Contact</li>
@@ -37,9 +37,9 @@
 
     <div class="hero-explore">
         <div class="explore-content">
-          <a href="./view/explore.php" className ="explore">
+          <a href="../view/explore.php" className ="explore">
             <p>Get Started</p>
-            <img src="./pictures/arrow_btn.png" alt="" />
+            <img src="../pictures/arrow_btn.png" alt="" />
           </a>
         </div>
     </div>
@@ -49,9 +49,9 @@
 
     <script>
         const sentences = [
-          "Dive Into what you love",
-          "Indulge your passions",
-          "Give in to your passions"
+          "Enjoy the absolute Convenience",
+          "Park and Explore",
+          "Earn some Extra Cash"
         ];
     
         function displaySentences() {
@@ -67,7 +67,7 @@
 
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
-    <script src="./js/index.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 
 </html>

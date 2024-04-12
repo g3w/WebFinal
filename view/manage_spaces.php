@@ -4,19 +4,19 @@ include('../settings/connection.php');
 session_start();
 $user_id = $_SESSION['user_id'];
 
-$totalSpotsQuery = "SELECT SUM(Total_number_of_spots) AS total_spots FROM Parkingspace WHERE userid = $user_id";
+$totalSpotsQuery = "SELECT SUM(Total_number_of_spots) AS total_spots FROM parkingspace WHERE userid = $user_id";
 $totalSpotsResult = $conn->query($totalSpotsQuery);
 $totalSpotsRow = $totalSpotsResult->fetch_assoc();
 $totalSpots = $totalSpotsRow['total_spots'];
 
-$availableSpotsQuery = "SELECT SUM(number_of_spots) AS available_spots FROM Parkingspace WHERE userid = $user_id";
+$availableSpotsQuery = "SELECT SUM(number_of_spots) AS available_spots FROM parkingspace WHERE userid = $user_id";
 $availableSpotsResult = $conn->query($availableSpotsQuery);
 $availableSpotsRow = $availableSpotsResult->fetch_assoc();
 $availableSpots = $availableSpotsRow['available_spots'];
 
 $bookedSpots = $totalSpots - $availableSpots;
 
-$spaceQuery = "SELECT space_id FROM Parkingspace WHERE userid = '$user_id'";
+$spaceQuery = "SELECT space_id FROM parkingspace WHERE userid = '$user_id'";
 $spaceResult = $conn->query($spaceQuery);
 
 // Initialize total revenue variable
@@ -26,7 +26,7 @@ $totalRevenue = 0;
 if ($spaceResult && $spaceResult->num_rows > 0) {
     while ($spaceRow = $spaceResult->fetch_assoc()) {
         $space_id = $spaceRow['space_id'];
-        $paymentQuery = "SELECT SUM(amount) AS total_amount FROM Payments WHERE space_id = '$space_id'";
+        $paymentQuery = "SELECT SUM(amount) AS total_amount FROM payments WHERE space_id = '$space_id'";
         $paymentResult = $conn->query($paymentQuery);
         if ($paymentResult && $paymentResult->num_rows > 0) {
             $paymentRow = $paymentResult->fetch_assoc();
@@ -207,12 +207,7 @@ if ($spaceResult && $spaceResult->num_rows > 0) {
             </a>
           </li>
 
-          <li>
-            <a href="../view/customer_reviews.php">
-              <i class="fas fa-tasks"></i>
-              <span class="nav-item">Reviews</span>
-            </a>
-          </li>
+
 
           <li>
             <a href="../view/space_change_password.php" class="settings">
@@ -294,8 +289,8 @@ if ($spaceResult && $spaceResult->num_rows > 0) {
                       echo "<td>{$row['number_of_spots']}</td>";
                       echo "<td>{$row['price']}</td>";
                       echo "<td>";
-                      echo "<a class='button edit' href='../action/edit_spaces.php?id={$row['space_id']}'>Edit</a>";
-                      echo "<a class='button delete' href='../action/delete_spaces.php?id={$row['space_id']}'>Delete</a>";
+                      echo "<a class='button edit' href='../actions/edit_spaces.php?id={$row['space_id']}'>Edit</a>";
+                      echo "<a class='button delete' href='../actions/delete_space.php?id={$row['space_id']}'>Delete</a>";
                       echo "</td>";
                       echo "</tr>";
                   }
